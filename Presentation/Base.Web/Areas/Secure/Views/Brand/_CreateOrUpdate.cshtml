@@ -1,0 +1,36 @@
+﻿@model BrandModel
+
+<input type="hidden" name="Id" value="@Model.Id" />
+<div asp-validation-summary="ModelOnly" class="message-error"></div>
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="cards-group" id="user-cards">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right; margin-top:7px;">
+                                <label asp-for="BusinessUnit_Id">Business unit</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select asp-for="BusinessUnit_Id" asp-items="@Model.BusinessUnits" class="form-control"></select>
+                                <span asp-validation-for="BusinessUnit_Id"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right; margin-top:7px;">
+                                <label asp-for="BrandName">Brand Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="BrandName" class="form-control" />
+                                <span asp-validation-for="BrandName"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,119 @@
+﻿@using System.Globalization
+@using Base.Core
+
+@*@inject IUserService userService*@
+@inject IWorkContext workContext
+@{
+    //Kendo UI
+    var kendoVersion = "2020.1.406";
+
+    var jQueryUI = "1.10.3";
+
+    var jqueryThme = $"~/lib/jquery-ui/jquery-ui-{jQueryUI}/jquery-ui-themes/smoothness/jquery-ui-{jQueryUI}.custom.min.css";
+    var jqueryLib = $"~/lib/jquery-ui/jquery-ui-{jQueryUI}/jquery-ui-{jQueryUI}.custom.min.js";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agro Lab</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <link rel="stylesheet" href="~/lib/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/lib/jquery-ui-dist/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css">
+    <link rel="stylesheet" href="~/lib/@("@fortawesome")/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/kendo/@kendoVersion/styles/web/kendo.common.min.css" />
+    <link rel="stylesheet" href="~/lib/kendo/@kendoVersion/styles/web/kendo.default.min.css" />
+    <link rel="stylesheet" href="~/lib/kendo/@kendoVersion/styles/web/kendo.rtl.min.css" />
+
+    <link rel="stylesheet" href="~/lib_npm/datatables.net-bs4/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/lib_npm/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/lib_npm/overlayscrollbars/css/OverlayScrollbars.min.css" />
+    <link rel="stylesheet" href="~/lib/overlayscrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.min.css">
+    <link href="~/css/admin/select2/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/admin/styles.css">
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-ui-dist/jquery-ui.min.js"></script>
+    <script src="~/lib/admin-lte/js/adminlte.min.js"></script>
+    <script src="~/lib/overlayscrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/lib/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/js/admin.common.js"></script>
+    <script src="~/js/admin.navigation.js"></script>
+    <script src="~/js/select2.min.js"></script>
+    <script src="~/js/admin.table.js"></script>
+    <script src="~/lib_npm/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib_npm/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib_npm/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib_npm/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="msapplication-TileImage" content="/icons/icons_0/mstile-144x144.png">
+    <meta name="msapplication-config" content="/icons/icons_0/browserconfig.xml">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body style="background-color:#ecf0f5">
+    <div class="throbber">
+        <div class="curtain">
+        </div>
+        <div class="curtain-content">
+            <div>
+                <h1 class="throbber-header">Wait..</h1>
+                <p>
+                    <img src="@Url.Content("~/css/admin/images/throbber-synchronizing.gif")" alt="" />
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="ajaxBusy">
+        <span>&nbsp;</span>
+    </div>
+    <div class="content-wrapper" style="margin-left:65px;">
+        @RenderBody()
+    </div>
+    <div style="margin-left:0px;">
+        @await Html.PartialAsync("Notifications")
+    </div>
+    <div class="main-footer" style="margin-left:0px;">
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12"></div>
+                    <div class="col-md-4 col-xs-12 text-center">
+                        <b></b>
+                    </div>
+                    <div class="col-md-4 col-xs-12 text-md-right">
+                        <b style="font-size:12pt;">Call Center CRM 1.0</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var AdminLTEOptions = {
+            boxWidgetOptions: {
+                boxWidgetIcons: {
+                    collapse: 'fa-minus',
+                    open: 'fa-plus'
+                }
+            }
+        };
+    </script>
+    <a id="backTop" class="btn btn-back-top bg-teal"></a>
+    <script>
+        $(document).ready(function () {
+            $('#backTop').backTop();
+            $('[data-toggle="tooltip"]').tooltip({ placement: 'bottom' });
+        });
+    </script>
+
+</body>
+</html>

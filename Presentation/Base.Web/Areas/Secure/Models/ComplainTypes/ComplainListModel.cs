@@ -1,0 +1,8 @@
+﻿using Base.Web.Framework.Models;
+
+namespace Base.Web.Areas.Secure.Models.ComplainTypes
+{
+    public class ComplainListModel : BasePagedListModel<ComplainTypeModel>
+    {
+    }
+}

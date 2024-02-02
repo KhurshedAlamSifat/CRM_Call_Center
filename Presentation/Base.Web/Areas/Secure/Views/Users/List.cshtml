@@ -1,0 +1,118 @@
+﻿@model UserSearchModel
+
+@{
+    //page title
+    ViewBag.PageTitle = "Users";
+    //active menu item (system name)
+    CrmHtml.SetActiveMenuItemSystemName("User");
+}
+
+
+
+<form asp-controller="Users" asp-action="List" method="post">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            Users
+        </h1>
+        <div class="float-right">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i>
+                AddNew
+            </a>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="form-horizontal">
+                <div class="cards-group">
+                    <div class="card card-default card-search">
+                        <div class="card-body">
+                            <div class="row search-row opened">
+                                <div class="search-text">Search</div>
+                                <div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
+                                <div class="icon-collapse"><i class="far fa-angle-up" aria-hidden="true"></i></div>
+                            </div>
+
+                            <div class="search-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group row">
+                                            <div class="col-md-4" style="text-align:right;margin-top:5px;">
+                                                <strong>User Phone</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input asp-for="SearchUserPhone" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center col-12">
+                                        <button type="button" id="search-users" class="btn btn-primary btn-search">
+                                            <i class="fas fa-search"></i>
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card card-default">
+                        <div class="card-body">
+                            @{
+                                var gridModel = new DataTablesModel
+                                {
+                                    Name = "user-grid",
+                                    UrlRead = new DataUrl("List", "Users", null),
+                                    SearchButtonId = "search-users",
+                                    Length = 25,
+                                    LengthMenu = "25, 50, 75, 100",
+                                    Filters = new List<FilterParameter>
+                                    {
+                                    new FilterParameter(nameof(Model.SearchUserPhone))
+                                    }
+                                };
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.Id))
+                                {
+                                    Title = "#"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.Name))
+                                {
+                                    Title = "Name"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.Phone))
+                                {
+                                    Title = "Phone"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.Email))
+                                {
+                                    Title = "Email"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.Company))
+                                {
+                                    Title = "Company"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.HomeAddress))
+                                {
+                                    Title = "Address",
+                                    Width = "100"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(UserModel.Id))
+                                {
+                                    Title = "Edit",
+                                    Width = "80",
+                                    ClassName = CrmColumnClassDefaults.Button,
+                                    Render = new RenderButtonEdit(new DataUrl("Edit"))
+                                });
+                            }
+                            @await Html.PartialAsync("Table", gridModel)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+</form>

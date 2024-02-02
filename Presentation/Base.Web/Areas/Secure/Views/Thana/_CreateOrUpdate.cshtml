@@ -1,0 +1,36 @@
+﻿@model ThanaModel
+
+<input type="hidden" name="Id" value="@Model.Id" />
+<div asp-validation-summary="ModelOnly" class="message-error"></div>
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="cards-group" id="user-cards">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right; margin-top:7px;">
+                                <label asp-for="District_Id">District</label>
+                            </div>
+                            <div class="col-md-9">
+                                <select asp-for="District_Id" asp-items="@Model.Districts" class="form-control" id="District_Id" name="District_Id" data-val="true" data-val-required="The District field is required."></select>
+                                <span asp-validation-for="District_Id"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right; margin-top:7px;">
+                                <label asp-for="ThanaName">Thana Name</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for="ThanaName" class="form-control" />
+                                <span asp-validation-for="ThanaName"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

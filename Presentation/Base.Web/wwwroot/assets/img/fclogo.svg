@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 221.19 56.64">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 26.34px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+        font-family: Impact, Impact;
+      }
+
+      .cls-3 {
+        fill: #4c9e63;
+      }
+
+      .cls-2 {
+        font-size: 17.71px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <text class="cls-1" transform="translate(62.02 47.93) scale(1.08 1)"><tspan x="0" y="0">Comunitarias</tspan></text>
+      <text class="cls-2" transform="translate(62.76 23.84) scale(1.08 1)"><tspan x="0" y="0">Farmarcias</tspan></text>
+      <path class="cls-3" d="M27.98,52.84c-13.56,0-24.56-11.21-24.56-25.05S14.42,2.75,27.98,2.75c7.47,0,14.16,3.41,18.67,8.78l2.34-2.39C43.84,3.53,36.4,0,28.13,0,12.59,0,0,12.44,0,27.78s12.59,27.78,28.13,27.78c8.6,0,16.29-3.81,21.45-9.81l-2.35-2.4c-4.5,5.78-11.44,9.5-19.25,9.5Z"/>
+      <polygon class="cls-3" points="32.84 44.38 22.95 44.38 25.28 9.2 35.17 9.2 32.84 44.38"/>
+      <polygon class="cls-3" points="11.28 31.62 11.98 21.73 47.07 21.73 46.36 31.62 11.28 31.62"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+﻿@model UserModel
+@{
+    ViewBag.PageTitle = "Edit User";
+    CrmHtml.SetActiveMenuItemSystemName("User");
+}
+
+<form asp-controller="Users" asp-action="Edit" method="post">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            Edit User - @Model.Name
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-action="List">Bact to List</a>
+            </small>
+        </h1>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save & Continue
+            </button>
+            <button type="button" name="save-continue" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal_@Model.Id"><span class='k-icon k-i-trash'></span>Delete</button>
+        </div>
+    </div>
+    @await Html.PartialAsync("_CreateOrUpdate", Model)
+</form>
+@await Html.PartialAsync("DeleteModal", new DeleteModalModel
+{
+    Id = Model.Id,
+    ActionName = Url.Action("Delete", new { id = Model.Id }),
+    ControllerName="User"
+})

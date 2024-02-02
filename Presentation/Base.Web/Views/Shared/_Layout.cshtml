@@ -1,0 +1,40 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="crmcallcenter">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @RenderSection("Meta", required: false)
+
+    <title>CRM</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./assets/css/style.css?v1.1.3">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+   
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-ui-dist/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/js/public.common.js"></script>
+
+    @RenderSection("ScriptsHeader", required: false)
+
+</head>
+<body class="nk-body" data-sidebar-collapse="lg" data-navbar-collapse="lg">
+    <div class="nk-app-root">
+        <div class="nk-main">
+            <div class="nk-wrap align-items-center justify-content-center">
+                <div class="container p-2 p-sm-4">
+                    <div>
+                            @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderSection("ScriptsFooter", required: false)
+</body>
+</html>

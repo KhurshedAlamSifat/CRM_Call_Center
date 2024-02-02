@@ -1,0 +1,60 @@
+﻿@model BusinessUnitModel
+
+@{
+    //page title
+    ViewBag.PageTitle = "BusinessUnit";
+    //active menu item (system name)
+    CrmHtml.SetActiveMenuItemSystemName("BusinessUnitList");
+}
+
+<form asp-controller="BusinessUnit" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="content-header clearfix">
+        <h5 class="float-left">
+            Edit - @Model.BusinessUnitName
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-action="List">Back to list</a>
+            </small>
+        </h5>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save & Continue
+            </button>
+            <button type="button" name="save-continue" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal_@Model.Id"><span class='k-icon k-i-trash'></span>Delete</button>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="form-horizontal">
+                <div class="cards-group">
+                    <div class="card card-default card-search">
+                        <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-md-3" style="text-align:right;margin-top:5px;">
+                                    <strong>BusinessUnit Name</strong>
+                                </div>
+                                <div class="col-md-9">
+                                    <input asp-for="@Model.BusinessUnitName" class="form-control" />
+                                    <span asp-validation-for=@Model.BusinessUnitName></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+@await Html.PartialAsync("DeleteModal", new DeleteModalModel
+{
+    Id = Model.Id,
+    ActionName = Url.Action("Delete", new { id = Model.Id }),
+    ControllerName="BusinessUnit"
+})

@@ -1,0 +1,29 @@
+@model ComplainTypeModel
+
+@{
+    ViewBag.PageTitle = "Add Complain";
+    CrmHtml.SetActiveMenuItemSystemName("ComplainList");
+}
+
+<form asp-controller="Complain" asp-action="Create" method="post">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            Add Complain
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-action="ComplainList">Back to List</a>
+            </small>
+        </h1>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save & Continue
+            </button>
+        </div>
+    </div>
+    @await Html.PartialAsync("_CreateOrUpdate", Model)
+</form>

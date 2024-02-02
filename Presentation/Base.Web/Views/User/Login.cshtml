@@ -1,0 +1,30 @@
+﻿@model LoginModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-center">CRM Login</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="User" asp-action="Login" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Phone" class="form-label">Phone<span class="required">*</span></label>
+                            <input asp-for="Phone" class="form-control" placeholder="Enter your phone number">
+                            <span asp-validation-for="Phone"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password<span class="required">*</span></label>
+                            <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password">
+                            <span asp-validation-for="Password"></span>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

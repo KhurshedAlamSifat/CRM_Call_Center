@@ -1,0 +1,96 @@
+﻿@model BrandSearchModel
+@{
+    ViewData["Title"] = "Brand";
+    CrmHtml.SetActiveMenuItemSystemName("Brand");
+}
+<form asp-controller="Brand" asp-action="List" method="post">
+    <div class="content-header clearfix">
+        <h5 class="float-left">
+            Brand
+        </h5>
+        <div class="float-right">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus-square"></i>
+                AddNew
+            </a>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="form-horizontal">
+                <div class="cards-group">
+                    <div class="card card-default card-search">
+                        <div class="card-body">
+                            <div class="row search-row opened">
+                                <div class="search-text">Search</div>
+                                <div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
+                                <div class="icon-collapse"><i class="far fa-angle-up" aria-hidden="true"></i></div>
+                            </div>
+
+                            <div class="search-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group row">
+                                            <div class="col-md-4" style="text-align:right; margin-top:5px;">
+                                                <strong>Brand Name</strong>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <input asp-for="BrandName" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center col-12">
+                                        <button type="button" id="search-brand" class="btn btn-primary btn-search">
+                                            <i class="fas fa-brand"></i>
+                                            Search
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card card-default">
+                        <div class="card-body">
+                            @{
+                                var gridModel = new DataTablesModel
+                                {
+                                    Name = "user-grid",
+                                    UrlRead = new DataUrl("BrandList", "Brand", null),
+                                    SearchButtonId = "search-brand",
+                                    Length = 25,
+                                    LengthMenu = "25, 50, 75, 100",
+                                    Filters = new List<FilterParameter>
+                                    {
+                                    new FilterParameter(nameof(Model.BrandName))
+                                    }
+                                };
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(BrandModel.BrandName))
+                                {
+                                    Title = "Name"
+                                });
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(BrandModel.BusinessUnitName))
+                                {
+                                    Title = "Business Unit Name"
+                                });
+
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(BrandModel.Id))
+                                {
+                                    Title = "Edit",
+                                    Width = "80",
+                                    ClassName = CrmColumnClassDefaults.Button,
+                                    Render = new RenderButtonEdit(new DataUrl("Edit"))
+                                });
+                            }
+                            @await Html.PartialAsync("Table", gridModel)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

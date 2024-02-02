@@ -1,0 +1,25 @@
+﻿@model ComplainTypeModel
+
+<input asp-for="Id" type="hidden" />
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <div class="cards-group">
+                <div class="card card-default">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-md-3" style="text-align:right;margin-top:5px;">
+                                <label asp-for=@Model.ComplainTypeName>Complain Type</label>
+                            </div>
+                            <div class="col-md-9">
+                                <input asp-for=@Model.ComplainTypeName class="form-control" />
+                                <span asp-validation-for=@Model.ComplainTypeName></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

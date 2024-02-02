@@ -1,0 +1,16 @@
+﻿@using Base.Services.Security;
+@using Base.Web.Framework.Menu;
+
+@inject IPermissionService permissionService
+@inject IXmlSiteMap siteMap
+
+<ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu">
+    @{
+        await siteMap.LoadFromAsync("~/Areas/Secure/sitemap.config");
+        var rootNode = siteMap.RootNode;
+        foreach (var item in rootNode.ChildNodes.Where(x => x.Visible))
+        {
+            @await Html.PartialAsync("_MenuItem", item)
+        }
+    }
+</ul>

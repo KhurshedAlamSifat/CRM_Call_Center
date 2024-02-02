@@ -1,0 +1,256 @@
+@model TicketModel
+@{
+    Layout = "_CrmAgentLayout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6" style="margin-top: 20px;">
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="entry-form">
+                        <h2>Ticket</h2>
+                        <form asp-action="TicketEntryForm" asp-controller="Ticket" id="ticketForm">
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="ComplainType_Id" style="font-size:12pt;">Complain Type :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="ComplainType_Id" asp-items="@Model.ComplainTypes" class="form-control"></select>
+                                    <span asp-validation-for="ComplainType_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="CustomerPhoneNo" style="font-size:12pt;">Customer PhoneNo :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="CustomerPhoneNo" class="form-control" id="CustomerPhoneNo" placeholder="Enter Customer Phone">
+                                    <span asp-validation-for="CustomerPhoneNo"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="CustomerName" style="font-size:12pt;">Customer Name:</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input asp-for="CustomerName" class="form-control" id="CustomerName" placeholder="Enter Customer Name">
+                                    <span asp-validation-for="CustomerName"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="District_Id" style="font-size:12pt;">Districts :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="District_Id" asp-items="@Model.Districts" class="form-control"></select>
+                                    <span asp-validation-for="District_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Thana_Id" style="font-size:12pt;">Thanas :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="Thana_Id" asp-items="@Model.Thanas" class="form-control"></select>
+                                    <span asp-validation-for="Thana_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="CustomerAddress" style="font-size:12pt;">Customer Address :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <textarea asp-for="CustomerAddress" class="form-control" id="CustomerAddress" placeholder="Enter Customer Address"></textarea>
+                                    <span asp-validation-for="CustomerAddress"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Category_Id" style="font-size:12pt;">Product Category :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="Category_Id" class="form-control" asp-items="@Model.Categories"></select>
+                                    <span asp-validation-for="Category_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Problem_Id" style="font-size:12pt;">Problem :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="Problem_Id" class="form-control" asp-items="@Model.Problems"></select>
+                                    <span asp-validation-for="Problem_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Brand_Id" style="font-size:12pt;">Brand :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="Brand_Id" class="form-control" asp-items="@Model.Brands"></select>
+                                    <span asp-validation-for="Brand_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Business_Id" style="font-size:12pt;">Business :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="Business_Id" class="form-control" asp-items="@Model.BusinessUnits"></select>
+                                    <span asp-validation-for="Business_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="ServiceCenter_Id" style="font-size:12pt;">Service Center :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="ServiceCenter_Id" class="form-control" asp-items="@Model.ServiceCenters"></select>
+                                    <span asp-validation-for="ServiceCenter_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Technician_Id" style="font-size:12pt;">Technicians :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select asp-for="Technician_Id" class="form-control" asp-items="@Model.Technicians"></select>
+                                    <span asp-validation-for="Technician_Id"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    <label for="Note" style="font-size:12pt;">Notes :</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <textarea asp-for="Note" class="form-control" id="Note" placeholder="Enter Any Note"></textarea>
+                                    <span asp-validation-for="Note"></span>
+                                </div>
+                                <div class="col-md-2">
+                                    <span style="color:red">*</span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-3" style="text-align:right;">
+                                    &nbsp;
+                                </div>
+                                <div class="col-md-7" style="text-align:center;">
+                                    <button type="submit" class="btn btn-primary" style="border-radius: 0px; width:50%;">Submit</button>
+                                </div>
+                                <div class="col-md-2">
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6" style="margin-top: 20px;">
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="data-table">
+                        <figure class="tabBlock">
+                            <ul class="tabBlock-tabs">
+                                <li class="tabBlock-tab is-active">Ticket List</li>
+                                <li class="tabBlock-tab">Order List(Online)</li>
+                            </ul>
+                            <div class="tabBlock-content">
+                                <div class="tabBlock-pane">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Message</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Table data goes here -->
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>John Doe</td>
+                                                    <td>johndoe@example.com</td>
+                                                    <td>Hello, world!</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tabBlock-pane">
+                                    Online will show here
+                                </div>
+                            </div>
+                        </figure>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/css/tab.css" rel="stylesheet" />
+<script src="~/js/tab.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#ComplainType_Id').select2();
+        $('#District_Id').select2();
+        $('#Thana_Id').select2();
+        $('#ProductCategory_Id').select2();
+        $('#Problem_Id').select2();
+        $('#Brand_Id').select2();
+        $("#Business_Id").select2();
+        $("#ServiceCenter_Id").select2();
+        $("#Technician_Id").select2();
+    });
+</script>
+<style>
+    .select2 {
+        font-size: 12pt;
+    }
+
+    .select2-selection {
+        border-radius: 0px !important;
+    }
+</style>

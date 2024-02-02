@@ -1,0 +1,44 @@
+﻿@using Base.Web.Areas.Secure.Models.Problems;
+@model Base.Web.Areas.Secure.Models.Problems.ProblemTypeModel
+@{
+    ViewData["Title"] = "Problem";
+    CrmHtml.SetActiveMenuItemSystemName("Problem");
+}
+
+<form asp-controller="Problem" asp-action="Edit" method="post">
+    <div class="content-header clearfix">
+        <h5 class="float-left">
+            Edit - @Model.ProblemDescription
+            <small>
+                <i class="fas fa-arrow-circle-left"></i>
+                <a asp-action="ProblemList">Back to list</a>
+            </small>
+        </h5>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                Save & Continue
+            </button>
+            <button type="button" name="save-continue" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal_@Model.Id"><span class='k-icon k-i-trash'></span>Delete</button>
+        </div>
+    </div>
+    @await Html.PartialAsync("_CreateOrUpdate", Model)
+</form>
+
+@await Html.PartialAsync("DeleteModal", new DeleteModalModel
+{
+    Id = Model.Id,
+    ActionName = Url.Action("Delete", new { id = Model.Id }),
+    ControllerName="Problem"
+})
+
+<script>
+    $(document).ready(function () {
+        $('#ProblemId').select2();
+    });
+</script>
+
